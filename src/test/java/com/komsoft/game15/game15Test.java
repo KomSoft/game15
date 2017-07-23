@@ -9,22 +9,22 @@ import static org.junit.Assert.*;
  * Created by John on 16.07.2017.
  */
 public class game15Test {
-    private game15 game = new game15();
+    private Game15 game = new Game15();
 
-    //    @Test (expected ticTac15Exception.class)
+    //    @Test (expected TicTac15Exception.class)
     @Test
     public void init() throws Exception {
         boolean thrown = false;
         try {
             game.init(-1);
-        } catch (ticTac15Exception te) {
+        } catch (TicTac15Exception te) {
             thrown = true;
         }
         assertTrue(thrown);
         thrown = false;
         try {
             game.init(1);
-        } catch (ticTac15Exception te) {
+        } catch (TicTac15Exception te) {
             thrown = true;
         }
         assertTrue(thrown);
@@ -32,7 +32,7 @@ public class game15Test {
             thrown = true;
             try {
                 game.init(i);
-            } catch (ticTac15Exception te) {
+            } catch (TicTac15Exception te) {
                 thrown = false;
             }
             assertTrue(thrown);
@@ -57,7 +57,7 @@ public class game15Test {
        // проверим, чтобы отлавливался нужный exception
         try {
             game.moveElem("not_integer");
-        } catch (ticTac15Exception te) {
+        } catch (TicTac15Exception te) {
             // do nothing
         } catch (Throwable unhandledE) {
             unhandledException = true;
@@ -69,7 +69,7 @@ public class game15Test {
         for (int i = k - 2; i < k * k + 2; i++) {
             try {
                 game.moveElem("" + i);
-            } catch (ticTac15Exception te) {
+            } catch (TicTac15Exception te) {
                 // do nothing
             } catch (Throwable unhandledE) {
                 unhandledException = true;
@@ -83,13 +83,13 @@ public class game15Test {
     public void main() throws Exception {
         String[] s;
         s = new String[]{};
-        game15.main(s);
+        Game15.main(s);
         s = new String[]{"test"};
-        game15.main(s);
+        Game15.main(s);
 //        s = new String[]{"8"};
-//        game15.main(s);
+//        Game15.main(s);
         s = new String[]{"15"};
-        game15.main(s);
+        Game15.main(s);
     }
 */
 }

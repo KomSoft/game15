@@ -6,7 +6,7 @@ import java.nio.charset.Charset;
  * Игра "Пятнашки"
  * Created by John on 15.07.2017.
  */
-public class game15 {
+public class Game15 {
     private final int MAXSIZE = 10;
     private int lSize = 0;
     private int[][] gameField;
@@ -23,11 +23,11 @@ public class game15 {
         return won;
     }
 
-    //    public game15(int ii) throws ticTac15Exception {
-    public void init(int ii) throws ticTac15Exception {
+    //    public Game15(int ii) throws TicTac15Exception {
+    public void init(int ii) throws TicTac15Exception {
         if (ii < 2 || ii > MAXSIZE) {
             gameOver = true;
-            throw new ticTac15Exception("Size of field must be 'Integer' from 2 to " + MAXSIZE);
+            throw new TicTac15Exception("Size of field must be 'Integer' from 2 to " + MAXSIZE);
         }
         lSize = ii;
         gameField = new int[lSize][lSize];
@@ -100,7 +100,7 @@ public class game15 {
         }
     }
 
-    private void checkComplete() { // throws ticTac15Exception {
+    private void checkComplete() { // throws TicTac15Exception {
         for (int i = 0; i < lSize * lSize - 1; i++) {
             if (gameField[i / lSize][i % lSize] != i + 1) {
                 return;
@@ -110,15 +110,15 @@ public class game15 {
         won = true;
     }
 
-    public void moveElem(String s) throws ticTac15Exception {
+    public void moveElem(String s) throws TicTac15Exception {
         int elem;
         try {
             elem = Integer.parseInt(s);
             if (elem < 0 || (elem > (lSize * lSize - 1))) {
-                throw new ticTac15Exception("Element's number must be 'Integer' from 1 to " + (lSize * lSize - 1));
+                throw new TicTac15Exception("Element's number must be 'Integer' from 1 to " + (lSize * lSize - 1));
             }
         } catch (NumberFormatException ae) {
-            throw new ticTac15Exception("Element's number must be 'Integer'");
+            throw new TicTac15Exception("Element's number must be 'Integer'");
         }
         if (elem == 0) {
             gameOver = true;
@@ -137,7 +137,7 @@ public class game15 {
             }
         }
         if (i >= lSize || j >= lSize) {
-            throw new ticTac15Exception("Ooops! Cannot find element " + elem);
+            throw new TicTac15Exception("Ooops! Cannot find element " + elem);
             // хотя такого быть не должно!
         }
         // смотрим, в какую сторону можно двинуть
@@ -166,19 +166,19 @@ public class game15 {
             checkComplete();
             return;
         }
-        throw new ticTac15Exception("Element " + elem + " cannot be move!");
+        throw new TicTac15Exception("Element " + elem + " cannot be move!");
     }
 
  /*   public static void main(String[] args) {
         int i;
         String s;
 
-        game15 ng = new game15();
+        Game15 ng = new Game15();
         try {
             i = Integer.parseInt(args[0]);
         } catch (IndexOutOfBoundsException | NumberFormatException ie) {
             System.out.println("Please enter field size in command line, 'Integer' value (2 or above).");
-            System.out.println("Example: 'java game15 3'");
+            System.out.println("Example: 'java Game15 3'");
             return;
 //            System.exit(-1);
 //        } catch (NumberFormatException ne) {
@@ -187,7 +187,7 @@ public class game15 {
         }
         try {
             ng.init(i);
-        } catch (ticTac15Exception te) {
+        } catch (TicTac15Exception te) {
             System.out.println(te.getMessage());
         }
 
@@ -202,7 +202,7 @@ public class game15 {
             }
             try {
             ng.moveElem(s);
-            } catch (ticTac15Exception te) {
+            } catch (TicTac15Exception te) {
                 System.out.println(te.getMessage());
             }
             if ( ng.isWon() ) {
